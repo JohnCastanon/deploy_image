@@ -1,7 +1,5 @@
 require 'sinatra'
 require_relative "user.rb"
-require 'sinatra/flash'
-
 
 enable :sessions
 
@@ -26,8 +24,6 @@ end
 
 get "/logout" do
 	session[:user_id] = nil
-	 flash[:success] = "You are now signed out."
-
 	redirect "/"
 end
 
@@ -40,7 +36,7 @@ post "/register" do
 	email = params[:email]
 	password = params[:password]
 
-	if email && password && User.first(email: email.downcase).nil?
+	if (email && password)!="" && User.first(email: email.downcase).nil?
 		u = User.new
 		u.email = email.downcase
 		u.password =  password
@@ -48,11 +44,7 @@ post "/register" do
 
 		session[:user_id] = u.id
 
-		flash[:success] = "Success: Signed up!"
-		redirect "/" 
-
-
-		# erb :"authentication/successful_signup"
+		erb :"authentication/successful_signup"
 	else
 		erb :"authentication/failed_signup"
 	end

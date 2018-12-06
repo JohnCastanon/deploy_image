@@ -1,12 +1,9 @@
-require 'sinatra/flash'
 require "sinatra"
 require 'data_mapper'
 require 'stripe'
-
+require 'sinatra/flash'
 
 require_relative "authentication.rb"
-enable :sessions
-
 
 
 set :publishable_key, 'pk_test_LnHwpxM8WB49CysYYjAYxFnT'
@@ -40,10 +37,6 @@ end
 DataMapper.finalize
 User.auto_upgrade!
 Items.auto_upgrade!
-
-
-
-
 
 
 
@@ -83,9 +76,6 @@ def admin
 end
 
 
-
-
-
 #make an admin user if one doesn't exist!
 if User.all(administrator: true).count == 0
   u = User.new
@@ -109,13 +99,6 @@ end
 # if they are not signed in, current_user will be nil
 
 get "/" do
-  
-flash[:success] = "yikes!" 
-
-  
-
-
-
   @Item = Items.all
   erb :index
 end
@@ -164,7 +147,7 @@ end
 
 post "/seller/create" do
     authenticate!
-     if params["Item"] 
+     if params["description"]!="" && params["price"]!=""
       product = Items.new
       product.item = params["Item"]
       product.description = params["description"]
@@ -172,19 +155,23 @@ post "/seller/create" do
       product.price = params["price"]
       product.seller = current_user.email
 
-  
-      product.save
-      flash[:success] = "Success: Hooray, your item is now in the marketplace!"
-        redirect "/"
-        # return "Item #{product["title"]} has been added to the marketplace."
 
-     else
-     return "Item can not be added.Please make sure item's infomration is set."   
+      @filename = params[:file][:filename]
+      file = params[:file][:tempfile]
+      File.open("./public/images/items/#{@filename}", 'wb') do |f|
+      f.write(file.read)
       end
 
-        flash[:success] = "Hooray, your item is now in the marketplace!"
-        redirect "/"
+      product.imgData="/images/items/#{@filename}"
+  
+      product.save
+        flash[:success]="Hooray, Flash is working!."
+        redirect "/items" 
 
+     else
+      flash[:error]="Item can not be added.Please make sure item's infomration is set." 
+      redirect "/selling" 
+    end
 
 end
 
@@ -201,21 +188,15 @@ get "/upgrade" do
 
 end
 
-
-get "/search" do
-    
-    ma = params["price"]
-    ma.to_s
-    thing = Items.all(ma)
-    @Item = thing
-    erb :items
-  
-end
+get "/search" do 
+    value=params["search"]
+    @value=Items.all(:item.gte => value)
+    erb :search
+end 
 
 
 get "/form" do
-    
-   
+  
   erb :form
 end
 
@@ -224,10 +205,7 @@ post '/save_image' do
 
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
-
-  
-
-    File.open("./public/#{@filename}", 'wb') do |f|
+    File.open("./public/images/items/#{@filename}", 'wb') do |f|
     f.write(file.read)
   end
 

@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 gem 'sinatra'
-gem  'sinatra-flash'
 gem 'data_mapper'
 gem 'stripe'
+gem 'sinatra-flash'
+
 group :development do
   gem "sqlite3-ruby"
   gem "dm-sqlite-adapter"
@@ -15,7 +16,6 @@ group :development do
   gem 'puma'
 
 end
-
 group :production do
   gem 'pg'
   gem 'dm-postgres-adapter'

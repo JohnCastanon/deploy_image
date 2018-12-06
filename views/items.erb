@@ -16,19 +16,19 @@
 		</div>
 	</div>
 
-	 <form action ="/search"  method="GET" class="form-inline p-2">
-		<input class="form-control mr-sm-2 " type="search" name = "price" placeholder="Looking for" aria-label="Search">
+	 <form action="/search" method="GET"class="form-inline p-2">
+		<input class="form-control mr-sm-2" name="search" type="search" placeholder="Looking for" aria-label="Search">
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 	</form>
 	   
 	<div class="container">
-		<div class="card-columns ">
+		<div class="card-columns">
 			<% @Item.each do |i| %>
 				<div class="card">
 					<div class= text-center>
 				    	<img class="card-img-top" src="/images/imgs.jpg" style=" width:100px; height:100px"alt="Card image cap">
 					</div>
-				    <div class="card-body text-center ">
+				    <div class="card-body text-center">
 				      <h5 class="card-title"><%=i.item %> </h5>
 				      <p class="card-text"> <em>$<%=i.price %></em></p>
 				       <p class="card-text"> <em>$<%=i.seller %></em></p>
