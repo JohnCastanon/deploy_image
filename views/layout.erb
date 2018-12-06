@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css">
+
+
+
+
+
+
+
+		/* Move down content because we have a fixed navbar that is 3.5rem tall */
+		body {
+		  padding-top: 3.5rem;
+		}
+	</style>
+</head>
+<body>
+
+	<%= erb :navigation %>
+
+	<main role="main">
+
+
+		<% flash.keys.each do |type| %>
+<!--   <div data-alert class="flash <%= type %> alert-box success radius p-5">
+    <%= flash[type] %>
+    <a href="#" class="close">&times;</a>
+  </div>
+ -->
+
+ 
+  <!-- <div data-alert class="alert-box success radius">
+    <%= flash[type] %>
+  <a href="#" class="close">&times;</a>
+</div> -->
+
+  
+<% end %>
+
+		<%= yield %>
+
+	</main>
+
+
+   <!--  <footer class="container ">
+      <p>&copy; Pulga Online</p>
+    </footer> -->
+
+
+
+    <!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+
+
+
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Pulga Online</h5>
+          <p></p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Buy</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="/login">Registration</a>
+              </li>
+              <li>
+                <a href="/items">Marketplace</a>
+              </li>
+              
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Sell</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="/upgrade">Become a seller</a>
+              </li>
+              <li>
+                <a href="/profile">Your Marketplace</a>
+              </li>
+              
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Contact Us</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#">956-529-9818</a>
+              </li>
+              <li>
+                <a href="/profile">Your Marketplace</a>
+              </li>
+              
+            </ul>
+
+          </div>
+
+
+          
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="style.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

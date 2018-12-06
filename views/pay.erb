@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="style.css" />
+<br>
+<div  class = "text-center" rows="100" cols="300" style="background-color:SlateBlue;">
+  <h1 >Open your own market place</h1>
+  <div class="text-center">
+  <img class="imgs" src="http://martialartsworldnews.com/wp-content/uploads/2017/07/Want-What-Youre-Selling-FT.png">
+  </div>
+
+
+    <div class=" p-3 font-italic">
+      <nobr class= "pr-5"> You can sell your items online</nobr>
+      <nobr class="pr-5">A space for your items 24/7</nobr>
+      <nobr class="pr-5">Its better than any garage sell out there</nobr>
+      <nobr class="pr-5">Post 25 items at the same time</nobr>
+    </div>
+
+  <form action="/charge" method="post" class="payment">
+      <article >
+        <label class="amount">
+          <span>Amount: $5.00</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= settings.publishable_key %>"
+              data-description="A month's subscription"
+              data-amount="500"
+              data-locale="auto"></script>
+    </form>
+</div>

@@ -1,0 +1,74 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+
+<style>
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+</style>
+
+<div class="jumbotron" style="background-image: url(https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif); background-size:100%";>
+          
+  <div class="container ">
+    <h1 class="display-1 text-white"><strong>Pulga Online! </strong></h1>
+      <p class="text-white"><strong>RENT, BUY, and SELL.</strong></p>
+        <div id = "item">
+          <nav class="navbar navbar-clear bg-clear">
+              <form class="form-inline">
+                <input href="videos" class="form-control mr-sm-2 ttex" type="search" placeholder="What Item?" aria-label="Search">
+              <button href="videos" role="button" id = "search" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </nav>
+        </div>
+  
+        <div id = "zip">
+          <nav class="navbar navbar-clear bg-clear">
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="What's your zipcode?" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </nav>  
+        </div>
+  </div>
+</div>
+</br>
+  <h2 class="text-center pb-5"><strong>Current Market Place</strong></h2>    
+      <img src ="/images/outline_phone_black_18dp.png"  width="50" height="50" >
+
+  <div class="container">
+    <div class="card-columns">
+      <% @Item.each do |i| %>
+        <div class="card">
+          <div class= text-center>
+              <img class="card-img-top" src="/images/imgs.jpg" style=" width:100px; height:100px"alt="Card image cap">
+          </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><%=i.item %> </h5>
+              <p class="card-text"> <em>$<%=i.price %></em></p>
+               <p class="card-text"> <em>$<%=i.seller %></em></p>
+              <a href=<%="ad/"+ (i.id).to_s %> name="id" class=" btn btn-primary">Contact Seller</a>
+            </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+  </div>
+</div>
+
+    <hr>
+
+
+
+
+
+
+
+
+
+
+</div> <!-- /container -->
