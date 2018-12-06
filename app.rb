@@ -154,16 +154,15 @@ post "/seller/create" do
       product.condition = params["option"]
       product.price = params["price"]
       product.seller = current_user.email
-
+      product.save
 
       @filename = params[:file][:filename]
       file = params[:file][:tempfile]
-      File.open("./public/images/items/#{@filename}", 'wb') do |f|
+      File.open("./public/images/items/#{@filename}"+(product.id).to_s, 'wb') do |f|
       f.write(file.read)
       end
-
-      product.imgData="/images/items/#{@filename}"
-  
+      
+      product.imgData="/images/items/#{@filename}"+(product.id).to_s
       product.save
         flash[:success]="Hooray, Flash is working!."
         redirect "/items" 
